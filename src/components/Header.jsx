@@ -5,7 +5,9 @@ import TabsList from "./TabsList.jsx";
 import styles from "./Header.module.css";
 
 function Header(setShowData) {
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(
+    localStorage.getItem("selectedTab") || false,
+  );
   return (
     <div className={styles.container}>
       <h1>Tabs Component With React</h1>

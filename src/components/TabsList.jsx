@@ -9,6 +9,8 @@ function TabsList({
   const selectTabHandler = () => {
     setShowData(tabInfo);
     setIsSelected(tabInfo.id);
+    localStorage.setItem("selectedTab", tabInfo.id);
+    localStorage.setItem("showData", JSON.stringify(tabInfo));
   };
 
   return (
