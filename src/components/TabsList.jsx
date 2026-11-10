@@ -1,11 +1,6 @@
 import styles from "./TabsList.module.css";
 
-function TabsList({
-  tabInfo,
-  setShowData: { setShowData },
-  isSelected,
-  setIsSelected,
-}) {
+function TabsList({ tabInfo, setShowData, isSelected, setIsSelected }) {
   const selectTabHandler = () => {
     setShowData(tabInfo);
     setIsSelected(tabInfo.id);
