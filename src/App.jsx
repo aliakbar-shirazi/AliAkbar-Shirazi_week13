@@ -25,6 +25,7 @@ function App() {
         setShowData={setShowData}
         setShowModal={setShowModal}
         tabsData={tabsData}
+        setTabsData={setTabsData}
       />
       <TabBody data={showData} />
     </div>
