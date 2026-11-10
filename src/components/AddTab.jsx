@@ -2,7 +2,7 @@ import { v4 } from "uuid";
 import { useState } from "react";
 import styles from "./AddTab.module.css";
 
-function AddTab({ showModal, setTabsData, setShowModal }) {
+function AddTab({ showModal, setTabsData, setShowModal, setAlertMessage }) {
   const [newTab, setNewTab] = useState({ tabName: "", title: "", text: "" });
   const handleChange = (event) => {
     const name = event.target.name;
@@ -12,7 +12,10 @@ function AddTab({ showModal, setTabsData, setShowModal }) {
   };
 
   const addHandler = () => {
-    if (!newTab.tabName || !newTab.title || !newTab.text) return;
+    if (!newTab.tabName || !newTab.title || !newTab.text) {
+      setAlertMessage("Please Enter valid data!");
+      return;
+    }
     const newData = { ...newTab, id: v4() };
     setTabsData((tabs) => {
       const result = [...tabs, newData];

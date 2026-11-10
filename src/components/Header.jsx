@@ -3,17 +3,28 @@ import { useState } from "react";
 import TabsList from "./TabsList.jsx";
 import styles from "./Header.module.css";
 
-function Header({ setShowData, setShowModal, tabsData, setTabsData }) {
+function Header({
+  setShowData,
+  setShowModal,
+  tabsData,
+  setTabsData,
+  setAlertMessage,
+}) {
   const [isSelected, setIsSelected] = useState(
     localStorage.getItem("selectedTab") || false,
   );
   const deleteHandler = (id) => {
-    if (!id) return;
+    if (!id) {
+      setAlertMessage("Please select a tab!");
+      return;
+    }
     const result = tabsData.filter((tab) => tab.id !== id);
     setTabsData(result);
     setShowData({});
     localStorage.setItem("tabsData", JSON.stringify(result));
     localStorage.removeItem("showData");
+    setIsSelected(false);
+    localStorage.removeItem("selectedTab");
   };
   return (
     <div className={styles.container}>
